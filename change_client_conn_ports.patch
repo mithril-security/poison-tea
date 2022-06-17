@@ -1,0 +1,15 @@
+diff --git a/examples/python/utils.py b/examples/python/utils.py
+index 41299fa..2652d66 100644
+--- a/examples/python/utils.py
++++ b/examples/python/utils.py
+@@ -19,8 +19,8 @@ import os
+ from teaclave import (AuthenticationService, FrontendService)
+ 
+ HOSTNAME = 'localhost'
+-AUTHENTICATION_SERVICE_ADDRESS = (HOSTNAME, 7776)
+-FRONTEND_SERVICE_ADDRESS = (HOSTNAME, 7777)
++AUTHENTICATION_SERVICE_ADDRESS = (HOSTNAME, 7776 + 1000)
++FRONTEND_SERVICE_ADDRESS = (HOSTNAME, 7777 + 1000)
+ 
+ USER_ID = "admin"
+ USER_PASSWORD = "teaclave"
