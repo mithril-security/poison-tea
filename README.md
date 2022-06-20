@@ -12,8 +12,8 @@ Note: this attack is an EPID attestation verification bypass, therefore you need
 ```
 # Clone the Teaclave repository
 $ git clone https://github.com/apache/incubator-teaclave.git
-$ git checkout v0.4.0
 $ cd incubator-teaclave/
+$ git checkout v0.4.0
 
 # Build the Teaclave platform using docker
 $ docker run --rm -v $(pwd):/teaclave -w /teaclave \
