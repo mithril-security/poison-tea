@@ -1,0 +1,24 @@
+diff --git a/sdk/python/teaclave.py b/sdk/python/teaclave.py
+index e6e7aef..5fda25e 100644
+--- a/sdk/python/teaclave.py
++++ b/sdk/python/teaclave.py
+@@ -203,6 +203,19 @@ class TeaclaveService:
+         mr_enclave = quote[112:112 + 32].hex()
+         mr_signer = quote[176:176 + 32].hex()
+ 
++        # get report_data from sgx enclave report
++        # report_data is at offset 368, size 64
++        report_data = quote[368:368 + 64]
++
++        # get EC pub key in X962 uncompressed point format
++        pub_key = cert.public_key().public_bytes(cryptography.hazmat.primitives.serialization.Encoding.X962, cryptography.hazmat.primitives.serialization.PublicFormat.UncompressedPoint)
++        # first byte should be 0x04 for uncompressed
++        assert(pub_key[0] == 4)
++
++        # verify the cryptographic link between the certificate pub key and the report data
++        if pub_key[1:] != report_data:
++            raise RuntimeError("Invalid report while verifying the certificate")
++
+         # get enclave_info
+         try:
+             enclave_info = toml.load(enclave_info_path)

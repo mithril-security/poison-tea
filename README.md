@@ -118,3 +118,10 @@ Sample of traffic log :
 [Client/frontend] {'message': {'get_task': {'task_id': 'task-c2ed0a1d-e880-4d68-84d6-057b982ea116'}}, 'metadata': {'id': 'admin', 'token': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbiIsInJvbGUiOiJQbGF0Zm9ybUFkbWluIiwiaXNzIjoiVGVhY2xhdmUiLCJleHAiOjE2NTU1NjE1MzB9.vK3OeuPrxw-cyYkEtUcDZwPoZ79Mr6h5gnXEhn9bmxmXEvx5qomocEVCzjdSwY5lUoav8FmF10WzlyhJieLj4Q'}}
 [Teaclave/frontend] {'result': 'ok', 'response': 'get_task', 'content': {'task_id': 'task-c2ed0a1d-e880-4d68-84d6-057b982ea116', 'creator': 'admin', 'function_id': 'function-6eaf078b-3ea5-40d0-b320-b9f6f45fbe78', 'function_owner': 'admin', 'function_arguments': '{"message":"Hello, Teaclave!"}', 'inputs_ownership': [], 'outputs_ownership': [], 'participants': ['admin'], 'approved_users': [], 'assigned_inputs': [], 'assigned_outputs': [], 'status': 10, 'result': {'result': {'Ok': {'return_value': [72, 101, 108, 108, 111, 44, 32, 84, 101, 97, 99, 108, 97, 118, 101, 33], 'tags_map': {}}}}}}
 ```
+
+## Remediation
+
+`fix.patch` contains a patch to apply on master (commit: 2ed0f17a02035b39e3bdaaf84927b99e7534ba36). 
+It adds the missing check that is needed to make sure that the certificate's pub key is equal to the pub key embedded in the SGX enclave report.
+
+Use `git apply fix.patch` to apply it on your working directory.
