@@ -1,4 +1,4 @@
-# SGX attestation bypass vulnerability on Teaclave
+# Poison Tea : SGX attestation bypass vulnerability on Teaclave
 
 This repository contains the code to reproduce our MITM attack on Teaclave services.
 
